@@ -1,6 +1,27 @@
-# CLI=RIGHT-TO-MUSIC 🎵
+# RIGHT-TO-MUSIC 🎵
 
-A powerful command-line tool and server application for music identification, downloading, and management using audio fingerprinting technology.
+<div align="center">
+
+[![Python](https://img.shields.io/badge/python-v3.6+-blue.svg)](https://www.python.org/)
+[![React](https://img.shields.io/badge/react-v18.2.0-blue.svg)](https://reactjs.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
+<h3>🎵 Identify, Download, and Manage Music with AI-Powered Audio Fingerprinting 🎵</h3>
+
+[Features](#-features) •
+[Installation](#-getting-started) •
+[Usage](#-usage) •
+[Documentation](#-technical-details) •
+[Contributing](#-contributing)
+
+</div>
+
+---
+
+## 📖 Overview
+
+A powerful full-stack application that combines the accuracy of Shazam-like audio fingerprinting with modern web technologies. Built with Python and React.js, it offers both CLI and web interface for seamless music identification and management.
 
 ## 🌟 Features
 
@@ -40,7 +61,7 @@ A powerful command-line tool and server application for music identification, do
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/shivamk1075/Right-To-Music
 cd Right-To-Music
 ```
 
@@ -164,8 +185,32 @@ Contributions are welcome! Please feel free to submit pull requests.
 
 ## 📞 Contact
 
-[Your contact information here]
+<div align="center">
+  <a href="https://github.com/shivamk1075">
+    <img src="https://img.shields.io/badge/-Github-181717?style=for-the-badge&logo=Github&logoColor=white" />
+  </a>&nbsp;
+  <!-- Add your LinkedIn if you have one -->
+  <a href="mailto:your-email@example.com">
+    <img src="https://img.shields.io/badge/-Email-EA4335?style=for-the-badge&logo=Gmail&logoColor=white" />
+  </a>
+</div>
 
 ---
 
-⭐ If you find this project useful, please consider giving it a star!
+<div align="center">
+  <p>
+    <a href="https://github.com/shivamk1075/Right-To-Music/stargazers">
+      <img src="https://img.shields.io/github/stars/shivamk1075/Right-To-Music?style=social" alt="Github Stars" />
+    </a>&nbsp;&nbsp;
+    <a href="https://github.com/shivamk1075/Right-To-Music/network/members">
+      <img src="https://img.shields.io/github/forks/shivamk1075/Right-To-Music?style=social" alt="Github Forks" />
+    </a>
+  </p>
+  
+  <p><strong>⭐ If you find this project useful, please consider giving it a star!</strong></p>
+  
+  <p>
+    <a href="https://github.com/shivamk1075/Right-To-Music/issues">Report Bug</a> · 
+    <a href="https://github.com/shivamk1075/Right-To-Music/issues">Request Feature</a>
+  </p>
+</div>
