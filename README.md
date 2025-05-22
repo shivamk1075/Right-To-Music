@@ -5,12 +5,12 @@ A powerful command-line tool and server application for music identification, do
 ## 🌟 Features
 
 ### Backend Features
-- **Song Identification**: Find and identify songs using audio fingerprinting ([`Project/server/shazam/MainShazam.py`](Project/server/shazam/MainShazam.py))
-- **Spotify Integration**: Download tracks directly from Spotify URLs ([`Project/server/spotify/getYT.py`](Project/server/spotify/getYT.py))
+- **Song Identification**: Find and identify songs using audio fingerprinting ([`MainShazam.py`](Project/server/shazam/MainShazam.py))
+- **Spotify Integration**: Download tracks directly from Spotify URLs ([`getYT.py`](Project/server/spotify/getYT.py))
 - **Local Server**: Host your own music identification server with HTTP/HTTPS support
-- **Database Management**: SQLite-based song and fingerprint storage ([`Project/server/db/sqlite.py`](Project/server/db/sqlite.py))
-- **Excel Export**: Export your music database to Excel ([`Project/server/DBinspect.py`](Project/server/DBinspect.py))
-- **WAV Processing**: Advanced WAV file handling and conversion ([`Project/server/wav/wavFuncs.py`](Project/server/wav/wavFuncs.py))
+- **Database Management**: SQLite-based song and fingerprint storage ([`sqlite.py`](Project/server/db/sqlite.py))
+- **Excel Export**: Export your music database to Excel ([`DBinspect.py`](Project/server/DBinspect.py))
+- **WAV Processing**: Advanced WAV file handling and conversion ([`wavFuncs.py`](Project/server/wav/wavFuncs.py))
 
 ### Frontend Features (React.js)
 - **Modern UI**: Beautiful and responsive interface with gradient backgrounds and modern card layouts
@@ -119,17 +119,17 @@ python main.py eraseID <SongID>
 
 The project uses a custom implementation of audio fingerprinting technology, similar to Shazam's algorithm:
 
-1. Audio Processing ([`Project/server/shazam/spectrogram.py`](Project/server/shazam/spectrogram.py))
+1. Audio Processing ([`spectrogram.py`](Project/server/shazam/spectrogram.py))
    - Converts audio to spectrogram
    - Uses FFT (Fast Fourier Transform) for frequency analysis
 
-2. Fingerprint Generation ([`Project/server/shazam/fingerprint.py`](Project/server/shazam/fingerprint.py))
+2. Fingerprint Generation ([`fingerprint.py`](Project/server/shazam/fingerprint.py))
    - Creates unique audio fingerprints
    - Stores in SQLite database for quick matching
 
 ### Database Structure
 
-The SQLite database ([`Project/server/db/sqlite.py`](Project/server/db/sqlite.py)) maintains:
+The SQLite database ([`sqlite.py`](Project/server/db/sqlite.py)) maintains:
 - Song metadata (title, artist, YouTube ID)
 - Audio fingerprints
 - Relationship mappings
