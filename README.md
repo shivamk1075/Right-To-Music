@@ -109,6 +109,10 @@ The SQLite database ([`sqlite.py`](Project/server/db/sqlite.py)) maintains:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## Acknowledgments
+
+This project was inspired by an open-source Go implementation by Chigozirim Igweamaka (MIT Licensed). The codebase has been fully re-implemented in Python by Shivam.
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit pull requests.
