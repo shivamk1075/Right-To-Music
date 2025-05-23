@@ -1,4 +1,4 @@
-# RIGHT-TO-MUSIC 🎵
+# RIGHT-TO-MUSIC
 
 <div align="center">
 
@@ -7,43 +7,19 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-<h3>🎵 Identify, Download, and Manage Music with AI-Powered Audio Fingerprinting 🎵</h3>
-
-[Features](#-features) •
-[Installation](#-getting-started) •
-[Usage](#-usage) •
-[Documentation](#-technical-details) •
-[Contributing](#-contributing)
-
 </div>
 
----
+A full-stack application for music identification and management using audio fingerprinting technology. Built with Python backend and React.js frontend.
 
-## 📖 Overview
+## Dataset
 
-A powerful full-stack application that combines the accuracy of Shazam-like audio fingerprinting with modern web technologies. Built with Python and React.js, it offers both CLI and web interface for seamless music identification and management.
+The project includes a test dataset consisting of:
+- 10 original full-length songs for training
+- 5-second snippets of each song taken at different time intervals
+- Labeled CSV mapping files for testing and validation
+- Both small and large test sets for comprehensive algorithm evaluation
 
-## 🌟 Features
-
-### Backend Features
-- **Song Identification**: Find and identify songs using audio fingerprinting ([`MainShazam.py`](Project/server/shazam/MainShazam.py))
-- **Spotify Integration**: Download tracks directly from Spotify URLs ([`getYT.py`](Project/server/spotify/getYT.py))
-- **Local Server**: Host your own music identification server with HTTP/HTTPS support
-- **Database Management**: SQLite-based song and fingerprint storage ([`sqlite.py`](Project/server/db/sqlite.py))
-- **Excel Export**: Export your music database to Excel ([`DBinspect.py`](Project/server/DBinspect.py))
-- **WAV Processing**: Advanced WAV file handling and conversion ([`wavFuncs.py`](Project/server/wav/wavFuncs.py))
-
-### Frontend Features (React.js)
-- **Modern UI**: Beautiful and responsive interface with gradient backgrounds and modern card layouts
-- **Real-time Audio Recognition**: Record audio from both microphone and system audio
-- **WebAssembly Integration**: Fast audio fingerprinting using WASM
-- **Socket.IO Integration**: Real-time communication with the backend server
-- **Rich Animations**: Smooth transitions and loading states
-- **Cross-Platform**: Works on both desktop and mobile devices
-- **Song Statistics**: Live counter showing total songs in the database
-- **Toast Notifications**: User-friendly status updates and notifications
-
-## 🚀 Getting Started
+## Quick Start
 
 ### Prerequisites
 
@@ -107,34 +83,7 @@ python main.py erase
 python main.py eraseID <SongID>
 ```
 
-## 🏗️ Project Structure
-
-```
-├── Project/
-│   ├── client/                # React frontend application
-│   │   ├── public/           # Static files
-│   │   ├── src/             # Source code
-│   │   │   ├── components/  # React components
-│   │   │   ├── styles/     # CSS modules
-│   │   │   └── App.js      # Main application component
-│   │   └── package.json    # Frontend dependencies
-│   │
-│   └── server/              # Python backend application
-│       ├── main.py         # Main entry point and CLI handler
-│       ├── CMD.py          # Command implementation
-│       ├── DBinspect.py    # Database inspection
-│       ├── params.py       # Configuration parameters
-│       ├── Sockets.py      # Network socket handling
-│       ├── db/            # Database management
-│       ├── shazam/        # Audio fingerprinting
-│       ├── spotify/       # Spotify integration
-│       ├── wav/          # WAV file processing
-│       └── utils/        # Helper utilities
-│
-└── Audio_Dataset/          # Test audio files and mappings
-```
-
-## 🛠️ Technical Details
+## Technical Details
 
 ### Audio Fingerprinting
 
@@ -155,46 +104,18 @@ The SQLite database ([`sqlite.py`](Project/server/db/sqlite.py)) maintains:
 - Audio fingerprints
 - Relationship mappings
 
-### Server Component
 
-The server provides:
-- RESTful API endpoints
-- Real-time audio processing
-- Secure HTTPS support
-- Cross-platform compatibility
-
-## 📈 Future Improvements
-
-- [ ] Add batch processing for multiple files
-- [ ] Implement caching for faster lookups
-- [ ] Add support for more music platforms
-- [ ] Improve fingerprint matching accuracy
-- [ ] Add API documentation
-
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-### Acknowledgments
-
-Note: This project was inspired by an open-source Go implementation by Chigozirim Igweamaka (MIT Licensed). The codebase has been fully re-implemented in Python by Shivam.
-
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit pull requests.
 
-## 📞 Contact
+## Contact
 
 shivam.kumar.101075@gmail.com
-<!-- <div align="center">
-  <a href="https://github.com/shivamk1075">
-    <img src="https://img.shields.io/badge/-Github-181717?style=for-the-badge&logo=Github&logoColor=white" />
-  </a>&nbsp;
-  <!-- Add your LinkedIn if you have one -->
-  <!-- <a href="mailto:shivam.kumar.101075@gmail.com">
-    <img src="https://img.shields.io/badge/-Email-EA4335?style=for-the-badge&logo=Gmail&logoColor=white" />
-  </a>
-</div> --> 
 
 ---
 
