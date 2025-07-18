@@ -31,7 +31,7 @@ soundfile>=0.10.3   # For WAV file operations
 flask>=2.0.1
 python-engineio>=4.4.0
 python-socketio>=5.7.2
-flask-socketio>=6.4.3
+flask-socketio>=5.5.1
 eventlet
 requests>=2.26.0
 
