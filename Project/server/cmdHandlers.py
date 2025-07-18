@@ -245,21 +245,56 @@ def serve(protocol: str, port: str):
 #     print(f"Starting HTTP server on port {port}")
 #     http_server.serve_forever()
 # DG
+# def serve_https(socket_server, port: str):
+#     context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+#     context.load_cert_chain(certfile='/etc/letsencrypt/live/localport.online/fullchain.pem',
+#                             keyfile='/etc/letsencrypt/live/localport.online/privkey.pem')
+
+#     app = socketio.WSGIApp(socket_server)
+#     app = socketio.WSGIApp(socket_server, cors_allowed_origins="*")
+#     print(f"Starting HTTPS server on port {port}")
+#     eventlet.wsgi.server(eventlet.listen(('', int(port)), backlog=100), app, ssl_context=context)
+
 def serve_https(socket_server, port: str):
     context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
-    context.load_cert_chain(certfile='/etc/letsencrypt/live/localport.online/fullchain.pem',
-                            keyfile='/etc/letsencrypt/live/localport.online/privkey.pem')
+    context.load_cert_chain(
+        certfile='/etc/letsencrypt/live/localport.online/fullchain.pem',
+        keyfile='/etc/letsencrypt/live/localport.online/privkey.pem'
+    )
+    raw_app = socketio.WSGIApp(socket_server)
 
-    app = socketio.WSGIApp(socket_server)
-    app = socketio.WSGIApp(socket_server, cors_allowed_origins="*")
-    print(f"Starting HTTPS server on port {port}")
-    eventlet.wsgi.server(eventlet.listen(('', int(port)), backlog=100), app, ssl_context=context)
+    # Simple CORS middleware wrapper
+    def cors_app(environ, start_response):
+        # Handle OPTIONS preflight
+        if environ["REQUEST_METHOD"] == "OPTIONS":
+            headers = [
+                ("Access-Control-Allow-Origin", "*"),
+                ("Access-Control-Allow-Methods", "GET,POST,OPTIONS"),
+                ("Access-Control-Allow-Headers", "*"),
+            ]
+            start_response("200 OK", headers)
+            return [b""]
+
+        # For all other requests, append the CORS header
+        def custom_start(status, headers, exc_info=None):
+            headers.append(("Access-Control-Allow-Origin", "*"))
+            return start_response(status, headers, exc_info)
+
+        return raw_app(environ, custom_start)
+
+    print(f"Starting HTTPS server on port {port} (with CORS)")
+    eventlet.wsgi.server(
+        eventlet.listen(("", int(port)), backlog=100),
+        cors_app,
+        ssl_context=context,
+    )
 
 
 def serve_http(socket_server, port: str):
     app = socketio.WSGIApp(socket_server)
     # enable CORS for polling & websocket transports
     # app = socketio.WSGIApp(socket_server, cors_allowed_origins="*")
+    raw_app = socketio.WSGIApp(socket_server)
     # --- Begin simple CORS middleware wrapper ---
     def cors_app(environ, start_response):
        # respond to OPTIONS preflight
