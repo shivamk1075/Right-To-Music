@@ -1,14 +1,16 @@
 services:
   - type: web
-    name: right-to-music
+    name: seek-tune
     env: python
-    rootDir: Project/server  # <- Specify correct working directory
+    plan: free
+    rootDir: Project/server
     buildCommand: pip install -r requirements.txt
     startCommand: |
       export PORT=${PORT:-5000}
       python3 main.py serve --proto http -p $PORT
-    plan: free
-    autoDeploy: true
+    envVars:
+      - key: FLASK_ENV
+        value: production
 
   - type: web
     name: audio-matcher
