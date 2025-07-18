@@ -259,9 +259,31 @@ def serve_https(socket_server, port: str):
 def serve_http(socket_server, port: str):
     app = socketio.WSGIApp(socket_server)
     # enable CORS for polling & websocket transports
-    app = socketio.WSGIApp(socket_server, cors_allowed_origins="*")
+    # app = socketio.WSGIApp(socket_server, cors_allowed_origins="*")
+    # --- Begin simple CORS middleware wrapper ---
+    def cors_app(environ, start_response):
+       # respond to OPTIONS preflight
+       if environ["REQUEST_METHOD"] == "OPTIONS":
+            headers = [
+                ("Access-Control-Allow-Origin", "*"),
+                ("Access-Control-Allow-Methods", "GET,POST,OPTIONS"),
+                ("Access-Control-Allow-Headers", "*"),
+            ]
+            start_response("200 OK", headers)
+            return [b""]
+
+        # for all other requests, append Access-Control-Allow-Origin
+        def custom_start(status, headers, exc_info=None):
+            headers.append(("Access-Control-Allow-Origin", "*"))
+            return start_response(status, headers, exc_info)
+
+        return raw_app(environ, custom_start)
+    # --- End CORS middleware wrapper ---
+
     print(f"Starting HTTP server on port {port}")
     eventlet.wsgi.server(eventlet.listen(('', int(port)), backlog=100), app)
+    print(f"Starting HTTP server on port {port} (with CORS)")
+    eventlet.wsgi.server(eventlet.listen(("", int(port)), backlog=100), cors_app)
 
 
 def erase(songs_dir: str):
