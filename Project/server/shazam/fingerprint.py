@@ -1,4 +1,5 @@
 
+
 import numpy as np
 import params
 
@@ -24,14 +25,23 @@ class Couple:
 # The address is a hash. The couple contains the anchor time and the song ID.
 def Fingerprint(peaks, song_id):
     fingerprints = {}
-
+    # print(params.targetZoneSize1)
     tZS1 = params.targetZoneSize1
+    # print(f"targetZoneSize1 : {tZS1} and type : {type(tZS1)}")
+
     for i, anchor in enumerate(peaks):
         for j in range(i + 3, min(i + 3 + tZS1, len(peaks))):
-
+        # for j in range(i + 3, min(i + targetZoneSize1, len(peaks))):
             target = peaks[j]
+
+            # # Dg
+            # print(type(anchor))
+            # print(anchor)
             address = create_address(anchor, target)
             anchor_time_ms = int(anchor.time * 1000)
+            # # Dg
+            # anchor_time_ms = int(anchor['Time'] * 1000)
+
             fingerprints[address] = Couple(anchor_time_ms, song_id)
 
     return fingerprints
@@ -45,7 +55,25 @@ def create_address(anchor, target):
     anchor_freq = int(np.real(anchor.freq))  # Use real part of frequency
     target_freq = int(np.real(target.freq))  # Use real part of frequency
     delta_ms = int((target.time - anchor.time) * 1000)  # Time difference in milliseconds
+    
+    # # Dg
+    # anchor_freq = int(np.real(anchor['Freq']))  # Use real part of frequency
+    # target_freq = int(np.real(target['Freq']))  # Use real part of frequency
+    # delta_ms = int((target['Time'] - anchor['Time']) * 1000)  # Time difference in milliseconds
+
     # Combine the frequency of the anchor, target, and delta time into a 32-bit address
     address = (anchor_freq << 23) | (target_freq << 14) | delta_ms
+
+    # return address
+    # Dg
     return int(address)
 
+
+# # Example usage
+# peaks = [Peak(0.0, 1000 + 10j), Peak(0.1, 1050 + 20j), Peak(0.2, 1100 + 30j)]  # Example peaks
+# song_id = 12345
+# fingerprints = Fingerprint(peaks, song_id)
+
+# # Display fingerprints
+# for address, couple in fingerprints.items():
+#     print(f"Address: {address}, Time: {couple.anchor_time_ms}, Song ID: {couple.song_id}")

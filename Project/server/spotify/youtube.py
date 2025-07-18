@@ -1,8 +1,14 @@
+
+
 import requests
 import json
+import time
 import re
-from typing import List, Optional
+from typing import List, Optional, Tuple
 
+DEVELOPER_KEY = ""  # Add your YouTube API key here
+YOUTUBE_API_SERVICE_NAME = "youtube"
+YOUTUBE_API_VERSION = "v3"
 DURATION_MATCH_THRESHOLD = 10  # seconds
 
 class Track:
@@ -44,6 +50,26 @@ def convert_string_duration_to_seconds(duration_str: str) -> int:
     return 0
 
 
+def get_youtube_id_with_api(track: Track) -> Optional[str]:
+    """Get YouTube video ID for a track using YouTube API."""
+    from googleapiclient.discovery import build
+
+    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
+
+    query = f"'{track.title}' {track.artist} {track.album}"  # Example: 'Lovesong' The Cure Disintegration
+    request = youtube.search().list(
+        part="id,snippet",
+        q=query,
+        videoCategoryId="10",  # Music videos
+        type="video"
+    )
+
+    response = request.execute()
+
+    for item in response["items"]:
+        if item["id"]["kind"] == "youtube#video":
+            return item["id"]["videoId"]
+    return None
 
 
 def yt_search(search_term: str, limit: int = 10) -> List[SearchResult]:
@@ -88,6 +114,27 @@ def yt_search(search_term: str, limit: int = 10) -> List[SearchResult]:
     return results
 
 
+# def get_youtube_id(track: Track) -> Optional[str]:
+#     """Search YouTube and find the best match for a given track."""
+#     song_duration_in_seconds = track.duration
+#     search_query = f"'{track.title}' {track.artist}"
+
+#     search_results = yt_search(search_query, 10)
+#     if not search_results:
+#         raise Exception(f"No songs found for {search_query}")
+
+#     # Try to match the closest duration
+#     # for result in search_results:
+#     # Debugged code :
+#     print(f"Search query: {search_query}")
+#     for result in search_results:
+#         print(f"Result: {result.title}, Duration: {result.duration}")
+#         result_duration_in_seconds = convert_string_duration_to_seconds(result.duration)
+#         if abs(result_duration_in_seconds - song_duration_in_seconds) <= DURATION_MATCH_THRESHOLD:
+#             return result.id
+
+#     return None
+# Trying next options : This will ensure the process doesn't fail entirely and continues with the top match if nothing meets the threshold.
 def get_youtube_id(track: Track) -> Optional[str]:
     song_duration_in_seconds = track.duration
     search_query = f"'{track.title}' {track.artist}"

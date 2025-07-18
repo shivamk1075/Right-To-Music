@@ -1,6 +1,9 @@
 
 import numpy as np
 
+# FFT computes the Fast Fourier Transform (FFT) of the input data,
+# converting the signal from the time domain to the frequency domain.
+# Using numpy's FFT implementation for simplicity
 def FFT(input):
     complex_array = np.array(input, dtype=complex)
 
@@ -26,3 +29,7 @@ def recursive_fft(complex_array):
 
     return fft_result
 
+# # Example usage
+# input_signal = [0.0, 1.0, 0.0, -1.0]  # A simple test signal
+# fft_output = FFT(input_signal)
+# print(fft_output)

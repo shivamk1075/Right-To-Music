@@ -1,6 +1,11 @@
+
+
+
 import os
 import subprocess
 import shutil
+# from utils import move_file
+# New debug
 from utils.helpers import move_file
 
 def convert_to_wav(input_file_path, channels):
@@ -32,7 +37,7 @@ def convert_to_wav(input_file_path, channels):
     except subprocess.CalledProcessError as e:
         raise RuntimeError(f"Failed to convert to WAV: {e.stderr.decode()}")
     
-
+    # Rename temporary file to the desired output file
     move_file(tmp_file, output_file)
     
     return output_file

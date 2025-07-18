@@ -1,17 +1,26 @@
 
+
 import time
 import math
 import logging
 from typing import List, Dict, Tuple
-import db.genClient as dbClient
-import utils.loggs as logg
+
+# Dummy imports for DB and utils (replace with actual implementations)
+# import db
+# Dg
+import db.client as dbClient
+# import utils
+# Dg
+import utils.logger as logg
 import utils.utils as utils
+
+# Dg
 import shazam.spectrogram as spectrogram1
 import shazam.fingerprint as fingerprint
 import params
-
 # Constants
 # targetZoneSize = 2
+
 
 class Match:
     def __init__(self, song_id: int, song_title: str, song_artist: str, youtube_id: str, timestamp: int, score: float):
@@ -27,36 +36,58 @@ def FindMatches(audio_sample: List[float], audio_duration: float, sample_rate: i
     start_time = time.time()
 
     try:
+        # spectrogram = spectrogram.Spectrogram(audio_sample, sample_rate)
+        # Dg
         spectrogram = spectrogram1.Spectrogram(audio_sample, sample_rate)
     except Exception as err:
         return [], time.time() - start_time, f"failed to get spectrogram of samples: {err}"
 
+    # peaks = ExtractPeaks(spectrogram, audio_duration)
+    # sample_fingerprint = Fingerprint(peaks, utils.GenerateUniqueID())
+    # Dg
     peaks = spectrogram1.ExtractPeaks(spectrogram, audio_duration)
-
+    # sample_fingerprint = fingerprint.Fingerprint(peaks, utils.GenerateUniqueID())
+    # Dg
     sample_fingerprint = fingerprint.Fingerprint(peaks, utils.generate_unique_id())
+
+    # sample_fingerprint_map = {address: couple.AnchorTimeMs for address, couple in sample_fingerprint.items()}
+    #Dg
     sample_fingerprint_map = {address: couple.anchor_time_ms for address, couple in sample_fingerprint.items()}
 
     matches, _, err = FindMatchesFGP(sample_fingerprint_map)
     return matches, time.time() - start_time, err
 
+
+# params.tolerance = 100 
+# params.targetZoneSize2 = 3
+# params.threshold=10
+
 def FindMatchesFGP(sample_fingerprint: Dict[int, int]) -> Tuple[List[Match], float, Exception]:
     start_time = time.time()
+    # logger = utils.GetLogger()
+    #Dg
     logger = logg.get_logger()
 
     addresses = list(sample_fingerprint.keys())
 
     try:
+        # db_client = db.NewDBClient()
+        # Dg
         db_client = dbClient.new_db_client()
 
     except Exception as err:
         return [], time.time() - start_time, err
 
     try:
+        # m = db_client.GetCouples(addresses)
+        # Dg
         m = db_client.get_couples(addresses)
 
     except Exception as err:
         return [], time.time() - start_time, err
     finally:
+        # db_client.Close()
+        # Dg
         db_client.close()
 
     matches = {}  # songID -> [(sampleTime, dbTime)]
@@ -77,6 +108,9 @@ def FindMatchesFGP(sample_fingerprint: Dict[int, int]) -> Tuple[List[Match], flo
             matches[song_id].append([sample_fingerprint[address], couple.anchor_time_ms])
 
             # Update the earliest timestamp
+            # if song_id not in timestamps or couple.AnchorTimeMs < timestamps[song_id]:
+                # timestamps[song_id] = couple.AnchorTimeMs
+            #Dg
             if song_id not in timestamps or couple.anchor_time_ms < timestamps[song_id]:
                 timestamps[song_id] = couple.anchor_time_ms
 
@@ -84,6 +118,10 @@ def FindMatchesFGP(sample_fingerprint: Dict[int, int]) -> Tuple[List[Match], flo
                 target_zones[song_id] = {}
 
             # if couple.AnchorTimeMs not in target_zones[song_id]:
+            #     target_zones[song_id][couple.AnchorTimeMs] = 0
+
+            # target_zones[song_id][couple.AnchorTimeMs] += 1
+            #Dg
             if couple.anchor_time_ms not in target_zones[song_id]:
                 target_zones[song_id][couple.anchor_time_ms] = 0
 
@@ -97,12 +135,25 @@ def FindMatchesFGP(sample_fingerprint: Dict[int, int]) -> Tuple[List[Match], flo
     match_list = []
 
     for song_id, points in scores.items():
+        # song, song_exists, err = db.GetSongByID(song_id)
+        # # Dg
+        # song, song_exists, err = dbClient.get_song_by_id(song_id)
+        #Dg
         db_client=dbClient.new_db_client()
+        # song, song_exists, err = db_client.get_song_by_id(song_id)
+        # Dg
         song, song_exists= db_client.get_song_by_id(song_id)
 
         if not song_exists:
             logger.info(f"song with ID ({song_id}) doesn't exist")
             continue
+        # Dg
+        # if err:
+        #     logger.info(f"failed to get song by ID ({song_id}): {err}")
+        #     continue
+
+        # match = Match(song_id, song.Title, song.Artist, song.YouTubeID, timestamps[song_id], points)
+        #Dg
         match = Match(song_id, song.title, song.artist, song.youtube_id, timestamps[song_id], points)
         match_list.append(match)
 
@@ -140,6 +191,7 @@ def analyze_relative_timing(matches: Dict[int, List[Tuple[int, int]]]) -> Dict[i
         scores[song_id] = float(count)
     return scores
 
+# # Dg
 # def analyze_relative_timing(matches: Dict[int, List[Tuple[int, int]]]) -> Dict[int, float]:
 #     scores = {}
 #     for song_id, time_pairs in matches.items():

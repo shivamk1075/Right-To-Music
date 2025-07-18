@@ -1,9 +1,17 @@
 
+
+
 import sqlite3
 from typing import Dict, List, Tuple, Union
+# from models.models import Couple, Song
+# Dg
 from models.models import Couple
-from .genClient import Song
+from .client import Song
+
+# import utils
+# Dg
 import utils.utils as utils
+
 
 class SQLiteClient:
     def __init__(self, db_path: str):
@@ -33,10 +41,28 @@ class SQLiteClient:
     def close(self):
         self.conn.close()
 
+    # def store_fingerprints(self, fingerprints: Dict[int, Couple]):
+    #     with self.conn:
+    #         for address, couple in fingerprints.items():
+    #             self.conn.execute(
+    #                 "INSERT OR REPLACE INTO fingerprints (address, anchorTimeMs, songID) VALUES (?, ?, ?)",
+    #                 (address, couple.anchor_time_ms, couple.song_id)
+    #             )
+    # # Dg
+    # def store_fingerprints(self, fingerprints: Dict[int, Couple]):
+    #     with self.conn:
+    #         for address, couple in fingerprints.items():
+    #             self.conn.execute(
+    #                 "INSERT OR REPLACE INTO fingerprints (address, anchorTimeMs, songID) VALUES (?, ?, ?)",
+    #                 (int(address), int(couple.anchor_time_ms), int(couple.song_id))  # ensure all are native Python ints
+    #             )
+    #     return True
+    # Dg2
     def store_fingerprints(self, fingerprints: Dict[int, Couple]):
         with self.conn:
             for address, couple in fingerprints.items():
                 try:
+                    # print(f"[DEBUG] Inserting: {address=}, {couple.anchor_time_ms=}, {couple.song_id=}")
                     self.conn.execute(
                         "INSERT OR REPLACE INTO fingerprints (address, anchorTimeMs, songID) VALUES (?, ?, ?)",
                         (int(address), int(couple.anchor_time_ms), int(couple.song_id))
@@ -44,7 +70,7 @@ class SQLiteClient:
                 except Exception as e:
                     print(f"[ERROR] Failed to insert fingerprint: {e}")
                     print(f"Types => address: {type(address)}, time: {type(couple.anchor_time_ms)}, song_id: {type(couple.song_id)}")
-                    return False  
+                    return False  # early exit to show failure clearly
         return True
 
 

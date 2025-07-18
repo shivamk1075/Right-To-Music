@@ -1,5 +1,8 @@
+
+
 import numpy as np
 from PIL import Image
+import cmath
 
 # ConvertSpectrogramToImage converts a spectrogram to a heat map image
 def SpectrogramToImage(spectrogram, output_path):
@@ -33,4 +36,7 @@ def SpectrogramToImage(spectrogram, output_path):
     # Save the image to the specified path
     img.save(output_path)
 
-
+# Example usage
+spectrogram_example = np.random.random((100, 256)) + 1j * np.random.random((100, 256))  # Example complex spectrogram
+output_path = 'spectrogram.png'
+SpectrogramToImage(spectrogram_example, output_path)

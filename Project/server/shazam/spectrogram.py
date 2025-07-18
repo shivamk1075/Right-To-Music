@@ -1,5 +1,8 @@
+
+
 import numpy as np
-from .cooleyTukey import FFT
+from .fft import FFT
+# from scipy.signal import firwin, lfilter
 import math
 
 # Constants
@@ -9,6 +12,7 @@ maxFreq = 5000.0  # 5kHz
 hopSize = freqBinSize // 32
 
 
+# Dg
 class Peak:
     def __init__(self, time, freq):
         self.time = time  # Time in seconds
@@ -99,7 +103,118 @@ def Downsample(input_signal, original_sample_rate, target_sample_rate):
 
     return resampled
 
+            #  TRIAL 1
+# # Extract Peaks function
+# def ExtractPeaks(spectrogram, audio_duration):
+#     if len(spectrogram) < 1:
+#         return []
 
+#     bands = [(0, 10), (10, 20), (20, 40), (40, 80), (80, 160), (160, 512)]
+#     peaks = []
+#     bin_duration = audio_duration / len(spectrogram)
+
+#     threshold=0.4
+#     for bin_idx, bin_sample in enumerate(spectrogram):
+#         max_mags = []
+#         max_freqs = []
+#         freq_indices = []
+
+#         for band in bands:
+#             band_min, band_max = band
+#             max_mag = 0
+#             max_freq = 0
+#             # Dg
+#             freq_idx=0
+
+#             for idx, freq in enumerate(bin_sample[band_min:band_max]):
+#                 magnitude = abs(freq)
+#                 if magnitude > max_mag:
+#                     max_mag = magnitude
+#                     max_freq = freq
+#                     freq_idx = band_min + idx
+#             max_mags.append(max_mag)
+#             max_freqs.append(max_freq)
+#             freq_indices.append(freq_idx)
+
+#         # Calculate the average magnitude
+#         avg = np.mean(max_mags)
+
+#         # Add peaks that exceed the average magnitude
+#         for i, value in enumerate(max_mags):
+#             if value > threshold*avg:
+#                 peak_time_in_bin = freq_indices[i] * bin_duration / len(bin_sample)
+#                 peak_time = bin_idx * bin_duration + peak_time_in_bin
+#                 # peaks.append({'Time': peak_time, 'Freq': max_freqs[i]})
+#                 # Dg
+#                 peaks.append(Peak(peak_time, max_freqs[i]))
+
+#     return peaks
+
+#           TRIAL 2
+# # Extract Peaks function
+# def ExtractPeaks(spectrogram, audio_duration):
+#     if len(spectrogram) < 1:
+#         return []
+
+#     bands = [(0, 10), (10, 20), (20, 40), (40, 80), (80, 160), (160, 512)]
+#     peaks = []
+#     bin_duration = audio_duration / len(spectrogram)
+
+#     threshold=0.5
+#     Global_avg=0
+#     for bin_idx, bin_sample in enumerate(spectrogram):
+#         max_mags = []
+
+#         for band in bands:
+#             band_min, band_max = band
+#             max_mag = 0
+
+#             for idx, freq in enumerate(bin_sample[band_min:band_max]):
+#                 magnitude = abs(freq)
+#                 if magnitude > max_mag:
+#                     max_mag = magnitude
+#             max_mags.append(max_mag)
+
+#         # Calculate the average magnitude
+#         avg = np.mean(max_mags)
+#         Global_avg+=avg
+
+#     Global_avg=Global_avg/len(spectrogram)
+
+#     for bin_idx, bin_sample in enumerate(spectrogram):
+#         max_mags = []
+#         max_freqs = []
+#         freq_indices = []
+
+#         for band in bands:
+#             band_min, band_max = band
+#             max_mag = 0
+#             max_freq = 0
+#             # Dg
+#             freq_idx=0
+
+#             for idx, freq in enumerate(bin_sample[band_min:band_max]):
+#                 magnitude = abs(freq)
+#                 if magnitude > max_mag:
+#                     max_mag = magnitude
+#                     max_freq = freq
+#                     freq_idx = band_min + idx
+#             max_mags.append(max_mag)
+#             max_freqs.append(max_freq)
+#             freq_indices.append(freq_idx)
+
+#         # Add peaks that exceed the average magnitude
+#         for i, value in enumerate(max_mags):
+#             if value > threshold*Global_avg:
+#                 peak_time_in_bin = freq_indices[i] * bin_duration / len(bin_sample)
+#                 peak_time = bin_idx * bin_duration + peak_time_in_bin
+#                 # peaks.append({'Time': peak_time, 'Freq': max_freqs[i]})
+#                 # Dg
+#                 peaks.append(Peak(peak_time, max_freqs[i]))
+
+#     return peaks
+
+#               TRIAL 3
 # coef1=0.25
 # coef2=0.25
 import params
@@ -155,3 +270,10 @@ def ExtractPeaks(spectrogram, audio_duration):
 
     return peaks
 
+# Example usage
+# sample = np.random.random(5000)  # Example audio signal
+# sample_rate = 44100  # Example sample rate
+# spectrogram = Spectrogram(sample, sample_rate)
+# audio_duration = len(sample) / sample_rate
+# peaks = ExtractPeaks(spectrogram, audio_duration)
+# # print(peaks)

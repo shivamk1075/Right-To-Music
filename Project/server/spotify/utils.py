@@ -1,4 +1,7 @@
+
+
 import os
+import shutil
 import subprocess
 from urllib.parse import quote_plus
 import sqlite3
@@ -7,8 +10,10 @@ from typing import Tuple
 def encode_param(s: str) -> str:
     return quote_plus(s)
 
+
 def to_lower_case(s: str) -> str:
     return s.lower()
+
 
 def get_file_size(file: str) -> Tuple[int, str]:
     try:
@@ -16,6 +21,18 @@ def get_file_size(file: str) -> Tuple[int, str]:
         return file_info.st_size, None
     except Exception as e:
         return 0, str(e)
+
+
+def song_key_exists(key: str) -> Tuple[bool, str]:
+    try:
+        conn = sqlite3.connect('db.db')  # Change with your actual database path
+        cursor = conn.cursor()
+        cursor.execute("SELECT 1 FROM songs WHERE key=?", (key,))
+        exists = cursor.fetchone() is not None
+        conn.close()
+        return exists, None
+    except Exception as e:
+        return False, str(e)
 
 
 def yt_id_exists(yt_id: str) -> Tuple[bool, str]:

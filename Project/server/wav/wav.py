@@ -1,4 +1,6 @@
 
+
+
 import os
 import json
 import struct
@@ -75,6 +77,41 @@ def write_wav_file(filename, data, sample_rate, channels, bits_per_sample):
         write_wav_header(f, data, sample_rate, channels, bits_per_sample)
         f.write(data)
 
+
+# def read_wav_info(filename):
+#     with open(filename, 'rb') as f:
+#         data = f.read()
+    
+#     if len(data) < 44:
+#         raise ValueError("Invalid WAV file size (too small)")
+
+#     # Read header chunks
+#     header = struct.unpack('<4sI4s4sIHHIIHH4sI', data[:44])
+#     chunk_id = header[0]
+#     format = header[2]
+#     audio_format = header[5]
+    
+#     if chunk_id != b'RIFF' or format != b'WAVE' or audio_format != 1:
+#         raise ValueError("Invalid WAV header format")
+
+#     channels = header[6]
+#     sample_rate = header[7]
+#     data_chunk = data[44:]
+
+#     # Calculate audio duration (assuming data contains PCM data)
+#     if header[9] == 16:  # 16-bit PCM
+#         duration = len(data_chunk) / (channels * 2 * sample_rate)
+#     else:
+#         print("DEBUG: bits_per_sample =", header[9])
+#         raise ValueError("Unsupported bits per sample format")
+
+#     return {
+#         'channels': channels,
+#         'sample_rate': sample_rate,
+#         'data': data_chunk,
+#         'duration': duration
+#     }
+# Dg
 import struct
 
 def read_wav_info(filename):
@@ -160,6 +197,7 @@ class FFmpegMetadata:
         self.streams = data.get('streams', [])
         self.format = data.get('format', {})
 
+# New func 0
 def get_metadata(file_path):
     cmd = [
         "ffprobe",
@@ -184,6 +222,83 @@ def get_metadata(file_path):
     metadata.from_json(result.stdout.decode())
     
     return metadata,None
+
+# def get_metadata(file_path):
+#     cmd = [
+#         "ffprobe",
+#         "-v", "quiet",
+#         "-print_format", "json",
+#         "-show_format", "-show_streams", file_path
+#     ]
+#     result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    
+#     if result.returncode != 0:
+#         raise Exception(f"Error getting metadata: {result.stderr.decode()}")
+
+#     metadata = FFmpegMetadata()
+#     metadata.from_json(result.stdout.decode())
+    
+#     return metadata
+
+# New Func is written here 1
+# def get_metadata(file_path):
+#     cmd = [
+#         "ffprobe",
+#         "-v", "quiet",
+#         "-print_format", "json",
+#         "-show_format", "-show_streams", file_path
+#     ]
+#     result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+#     print("stdout:", result.stdout.decode())  # Print the stdout to see raw JSON output
+#     print("stderr:", result.stderr.decode())  # Print stderr to check for any errors
+
+#     if result.returncode != 0:
+#         raise Exception(f"Error getting metadata: {result.stderr.decode()}")
+
+#     # metadata = FFmpegMetadata()
+#     # metadata.from_json(result.stdout.decode())
+    
+#     # return metadata
+
+#     # For now modifying above
+#     metadata = json.loads(result.stdout.decode())
+#     return metadata
+# New func 3
+# def get_metadata(file_path):
+#     # Run ffprobe and collect output
+#     cmd = [
+#         "ffprobe",
+#         "-v", "quiet",
+#         "-print_format", "json",
+#         "-show_format", "-show_streams", file_path
+#     ]
+#     result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+#     if result.returncode != 0:
+#         raise Exception(f"Error getting metadata: {result.stderr.decode()}")
+
+#     # Load JSON output from ffprobe
+#     raw_metadata = json.loads(result.stdout.decode())
+
+#     # Convert all Tags keys to lowercase
+#     if "format" in raw_metadata and "tags" in raw_metadata["format"]:
+#         raw_metadata["format"]["tags"] = {
+#             k.lower(): v for k, v in raw_metadata["format"]["tags"].items()
+#         }
+
+#     if "streams" in raw_metadata and len(raw_metadata["streams"]) > 0:
+#         if "tags" in raw_metadata["streams"][0]:
+#             raw_metadata["streams"][0]["tags"] = {
+#                 k.lower(): v for k, v in raw_metadata["streams"][0]["tags"].items()
+#             }
+
+#     # Convert to FFmpegMetadata object if needed
+#     metadata = FFmpegMetadata()
+#     metadata.from_json(json.dumps(raw_metadata))
+
+#     return metadata
+
 
 def process_recording(rec_data, save_recording):
     decoded_audio_data = base64.b64decode(rec_data['audio'])
@@ -211,6 +326,7 @@ def process_recording(rec_data, save_recording):
 
 
 def reformat_wav(input_file, channels):
+    # Assuming that FFmpeg is used for reformatting
     output_file = input_file.replace('.wav', '_rfm.wav')
     cmd = [
         'ffmpeg', '-y', '-i', input_file,

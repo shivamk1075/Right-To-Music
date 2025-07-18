@@ -1,4 +1,5 @@
 
+
 class Couple:
     def __init__(self, anchor_time_ms: int, song_id: int):
         self.anchor_time_ms = anchor_time_ms
@@ -7,8 +8,9 @@ class Couple:
     def __repr__(self):
         return f"Couple(anchor_time_ms={self.anchor_time_ms}, song_id={self.song_id})"
 
-class RecordData:
 
+class RecordData:
+    # def __init__(self, audio: str, duration: float, channels: int, sample_rate: int, sample_size: int):
     def __init__(self, audio: str, duration: float, channels: int, sampleRate: int, sampleSize: int):
         self.audio = audio
         self.duration = duration
