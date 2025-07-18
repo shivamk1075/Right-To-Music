@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: seek-tune
+    name: right-to-match
     env: python
     plan: free
     rootDir: Project/server
