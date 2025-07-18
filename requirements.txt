@@ -23,6 +23,7 @@ soundfile>=0.10.3   # For WAV file operations
 # Web Server
 flask>=2.0.1     # For HTTP server
 python-socketio
+
 eventlet
 requests>=2.26.0 # For HTTP requests
 
