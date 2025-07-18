@@ -2,7 +2,7 @@ services:
   - type: web
     name: right-to-music
     env: python
-    rootDir: project/server
+    rootDir: Project/server
     buildCommand: ""
     startCommand: |
       export PORT=${PORT:-5000}
@@ -13,7 +13,7 @@ services:
   - type: web
     name: audio-matcher
     env: node
-    rootDir: project/client
+    rootDir: Project/client
     buildCommand: |
       npm install
       npm run build
