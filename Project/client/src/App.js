@@ -19,12 +19,17 @@ import AnimatedNumber from "./components/AnimatedNumber";
 
 const server = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
 
-var socket = io(server,
-   {
-  transports: ['websocket'],  // This disables long-polling completely
-  upgrade: false              // Prevents fallback to polling
-}
-);
+// var socket = io(server,
+//    {
+//   transports: ['websocket'],  // This disables long-polling completely
+//   upgrade: false              // Prevents fallback to polling
+// }
+// );
+var socket = io(server, {
+  transports: ['polling', 'websocket'],  // Allow fallback to polling
+  upgrade: true                          // Allow upgrade from polling → websocket (optional)
+});
+
 
 function App() {
   let ffmpegLoaded = false;
