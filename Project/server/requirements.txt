@@ -6,6 +6,7 @@ librosa>=0.8.1 # For audio feature extraction
 
 # Database
 # sqlite3
+pymongo>=4.3.3
 
 # Excel export
 openpyxl>=3.0.9
