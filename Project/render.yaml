@@ -3,7 +3,7 @@ services:
     name: seek-tune
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install -r requirements.txt && cd client && npm install && npm run build && cp -r build ../server/client_build
     startCommand: ./start.sh
     envVars:
       - key: FLASK_ENV
