@@ -24,6 +24,8 @@ soundfile>=0.10.3   # For WAV file operations
 flask>=2.0.1     # For HTTP server
 gunicorn>=21.2.0
 requests>=2.26.0 # For HTTP requests
+Flask-SocketIO
+eventlet
 
 # Utilities
 python-dotenv>=0.19.0  # For environment variables
