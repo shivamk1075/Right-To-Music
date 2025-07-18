@@ -10,7 +10,7 @@ services:
     plan: free
     autoDeploy: true
 
-  - type: web
+  - type: static
     name: audio-matcher
     env: node
     rootDir: project/client
