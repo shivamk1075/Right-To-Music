@@ -251,12 +251,15 @@ def serve_https(socket_server, port: str):
                             keyfile='/etc/letsencrypt/live/localport.online/privkey.pem')
 
     app = socketio.WSGIApp(socket_server)
+    app = socketio.WSGIApp(socket_server, cors_allowed_origins="*")
     print(f"Starting HTTPS server on port {port}")
     eventlet.wsgi.server(eventlet.listen(('', int(port)), backlog=100), app, ssl_context=context)
 
 
 def serve_http(socket_server, port: str):
     app = socketio.WSGIApp(socket_server)
+    # enable CORS for polling & websocket transports
+    app = socketio.WSGIApp(socket_server, cors_allowed_origins="*")
     print(f"Starting HTTP server on port {port}")
     eventlet.wsgi.server(eventlet.listen(('', int(port)), backlog=100), app)
 
