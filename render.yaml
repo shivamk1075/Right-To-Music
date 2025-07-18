@@ -2,8 +2,7 @@ services:
   - type: web
     name: right-to-music
     env: python
-    rootDir: Project/server
-    buildCommand: ""
+    buildCommand: pip install -r requirements.txt
     startCommand: |
       export PORT=${PORT:-5000}
       python3 main.py serve --proto http -p $PORT
