@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: right-to-music-backend
+    name: right-to-music
     env: python
     buildCommand: ""
     startCommand: |
@@ -11,7 +11,7 @@ services:
     autoDeploy: true
 
   - type: web
-    name: right-to-music-frontend
+    name: audio-matcher
     env: node
     rootDir: client
     buildCommand: |
