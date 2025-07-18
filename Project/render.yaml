@@ -1,10 +1,23 @@
 services:
   - type: web
-    name: seek-tune
+    name: right-to-music-backend
     env: python
+    buildCommand: ""
+    startCommand: |
+      export PORT=${PORT:-5000}
+      cd server
+      python3 main.py serve --proto http -p $PORT
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: ./start.sh
-    envVars:
-      - key: FLASK_ENV
-        value: production
+    autoDeploy: true
+
+  - type: web
+    name: right-to-music-frontend
+    env: node
+    rootDir: client
+    buildCommand: |
+      npm install
+      npm run build
+    startCommand: serve -s build
+    staticPublishPath: client/build
+    plan: free
+    autoDeploy: true
