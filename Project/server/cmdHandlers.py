@@ -184,7 +184,9 @@ def serve(protocol: str, port: str):
     # server = socketio.Server()
     # Dg
     # server = socketio.Server(cors_allowed_origins="*", async_mode="threading", transports=["websocket"],max_http_buffer_size=1000000)
-    server = socketio.Server(cors_allowed_origins="*", async_mode="eventlet", transports=["websocket"])
+    # server = socketio.Server(cors_allowed_origins="*", async_mode="eventlet", transports=["websocket"])
+    server = socketio.Server(cors_allowed_origins="*", async_mode="eventlet", transports=["polling", "websocket"], logger=True, engineio_logger=True)
+
 
 
     @server.event
