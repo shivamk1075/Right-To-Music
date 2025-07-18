@@ -1,10 +1,10 @@
 services:
   - type: web
-    name: right-to-music
+    name: seek-tune
     env: python
-    rootDir: Project/server
-    buildCommand: |
-      cd ../client && npm install && npm run build
-      cd ../server && pip install -r requirements.txt
-      cp -r ../client/build ./build
-    startCommand: gunicorn app:app
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: ./start.sh
+    envVars:
+      - key: FLASK_ENV
+        value: production
