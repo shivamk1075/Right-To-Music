@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: right-to-music
+    env: python
+    rootDir: project/server
+    buildCommand: ""
+    startCommand: |
+      export PORT=${PORT:-5000}
+      python3 main.py serve --proto http -p $PORT
+    plan: free
+    autoDeploy: true
+
+  - type: web
+    name: audio-matcher
+    env: node
+    rootDir: project/client
+    buildCommand: |
+      npm install
+      npm run build
+    startCommand: serve -s build
+    staticPublishPath: build
+    plan: free
+    autoDeploy: true
