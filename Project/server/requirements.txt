@@ -28,10 +28,13 @@ soundfile>=0.10.3   # For WAV file operations
 # requests>=2.26.0 # For HTTP requests
 
 # Web Server
+Flask==1.1.4
+flask-socketio==4.3.2
 python-engineio==3.13.2
 python-socketio==4.6.1
-flask-socketio==4.3.2
-Flask==1.1.4
+Jinja2==3.0.3
+MarkupSafe==2.0.1
+Werkzeug==1.0.1
 eventlet
 requests>=2.26.0
 
