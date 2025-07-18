@@ -10,14 +10,13 @@ services:
     plan: free
     autoDeploy: true
 
-  - type: static
+  - type: web
     name: audio-matcher
     env: node
     rootDir: project/client
     buildCommand: |
       npm install
       npm run build
-    startCommand: serve -s build
-    staticPublishPath: build
+    startCommand: npx serve -s build
     plan: free
     autoDeploy: true
