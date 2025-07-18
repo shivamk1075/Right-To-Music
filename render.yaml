@@ -7,7 +7,7 @@ services:
     buildCommand: pip install -r requirements.txt
     startCommand: |
       # export PORT=${PORT:-5000}
-      python3 main.py serve --proto http -p ${PORT:-5000}
+      python3 main.py serve --proto https -p ${PORT:-5000}
       # python3 main.py serve --proto http -p $PORT
     envVars:
       - key: FLASK_ENV
