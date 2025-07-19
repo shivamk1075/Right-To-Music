@@ -1,6 +1,6 @@
-# Audio-Match Grid Search Report
+# Grid Search Report
 
-This report presents the results of a grid search performed to optimize parameters for the Audio-Match fingerprinting and song identification system. The goal was to maximize Top-7 accuracy for song snippet recognition.
+This report presents the results of a grid search performed to optimize parameters for the RightToMusic fingerprinting and song identification system. The goal was to maximize Top-7 accuracy for song snippet recognition.
 
 ## Best Result
 **Best Top-7 Accuracy:** 73.33%  
