@@ -27,206 +27,206 @@ Below is the complete log of the grid search run, showing predictions and ranks 
 
 ---
 
-**Testing:** song10_snippet2.mp3
-**Top-7 predictions:** ['Hawa Hawai', 'Banjaara', 'Suit Suit', 'DJ Waley Babu - PagalSongs.com', 'Hanuman Chalisa(PagalWorld.com.se)', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'M Bole To']
-**Correct label:** 'Dua (Article 370)_320-(Fun2Desi.Com)' found at rank 6
-**Top-1 prediction:** Hawa Hawai
+**Testing:** song10_snippet2.mp3  
+**Top-7 predictions:** ['Hawa Hawai', 'Banjaara', 'Suit Suit', 'DJ Waley Babu - PagalSongs.com', 'Hanuman Chalisa(PagalWorld.com.se)', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'M Bole To']  
+**Correct label:** 'Dua (Article 370)_320-(Fun2Desi.Com)' found at rank 6  
+**Top-1 prediction:** Hawa Hawai  
 
 ---
 
-**Testing:** song10_snippet4.mp3
-**Top-7 predictions:** ['M Bole To', 'Suit Suit', 'DJ Waley Babu - PagalSongs.com', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Falak Tak', 'Hanuman Chalisa(PagalWorld.com.se)', 'Hawa Hawai']
-**Correct label:** 'Dua (Article 370)_320-(Fun2Desi.Com)' found at rank 4
-**Top-1 prediction:** M Bole To
+**Testing:** song10_snippet4.mp3  
+**Top-7 predictions:** ['M Bole To', 'Suit Suit', 'DJ Waley Babu - PagalSongs.com', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Falak Tak', 'Hanuman Chalisa(PagalWorld.com.se)', 'Hawa Hawai']  
+**Correct label:** 'Dua (Article 370)_320-(Fun2Desi.Com)' found at rank 4  
+**Top-1 prediction:** M Bole To  
 
 ---
 
-**Testing:** song1_snippet1.mp3
-**Top-7 predictions:** ['DJ Waley Babu - PagalSongs.com', 'Banjaara', 'Falak Tak']
-**Correct label:** 'Banjaara' found at rank 2
-**Top-1 prediction:** DJ Waley Babu - PagalSongs.com
+**Testing:** song1_snippet1.mp3  
+**Top-7 predictions:** ['DJ Waley Babu - PagalSongs.com', 'Banjaara', 'Falak Tak']  
+**Correct label:** 'Banjaara' found at rank 2  
+**Top-1 prediction:** DJ Waley Babu - PagalSongs.com  
 
 ---
 
-**Testing:** song1_snippet2.mp3
-**Top-7 predictions:** ['Banjaara', 'Suit Suit', 'Hawa Hawai', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'DJ Waley Babu - PagalSongs.com', 'Hanuman Chalisa(PagalWorld.com.se)', 'M Bole To']
-**Correct label:** 'Banjaara' found at rank 1
-**Top-1 prediction:** Banjaara
+**Testing:** song1_snippet2.mp3  
+**Top-7 predictions:** ['Banjaara', 'Suit Suit', 'Hawa Hawai', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'DJ Waley Babu - PagalSongs.com', 'Hanuman Chalisa(PagalWorld.com.se)', 'M Bole To']  
+**Correct label:** 'Banjaara' found at rank 1  
+**Top-1 prediction:** Banjaara  
 
 ---
 
-**Testing:** song1_snippet4.mp3
-**Top-7 predictions:** ['Suit Suit', 'Hawa Hawai', 'DJ Waley Babu - PagalSongs.com', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Banjaara', 'M Bole To', 'Hanuman Chalisa(PagalWorld.com.se)']
-**Correct label:** 'Banjaara' found at rank 5
-**Top-1 prediction:** Suit Suit
+**Testing:** song1_snippet4.mp3  
+**Top-7 predictions:** ['Suit Suit', 'Hawa Hawai', 'DJ Waley Babu - PagalSongs.com', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Banjaara', 'M Bole To', 'Hanuman Chalisa(PagalWorld.com.se)']  
+**Correct label:** 'Banjaara' found at rank 5  
+**Top-1 prediction:** Suit Suit  
 
 ---
 
-**Testing:** song2_snippet1.mp3
-**Top-7 predictions:** ['M Bole To', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hawa Hawai', 'DJ Waley Babu - PagalSongs.com', 'Hanuman Chalisa(PagalWorld.com.se)', 'Suit Suit', 'Banjaara']
-**Correct label:** 'M Bole To' found at rank 1
-**Top-1 prediction:** M Bole To
+**Testing:** song2_snippet1.mp3  
+**Top-7 predictions:** ['M Bole To', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hawa Hawai', 'DJ Waley Babu - PagalSongs.com', 'Hanuman Chalisa(PagalWorld.com.se)', 'Suit Suit', 'Banjaara']  
+**Correct label:** 'M Bole To' found at rank 1  
+**Top-1 prediction:** M Bole To  
 
 ---
 
-**Testing:** song2_snippet2.mp3
-**Top-7 predictions:** ['Suit Suit', 'Hawa Hawai', 'Banjaara', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com', 'M Bole To']
-**Correct label:** 'M Bole To' found at rank 7
-**Top-1 prediction:** Suit Suit
+**Testing:** song2_snippet2.mp3  
+**Top-7 predictions:** ['Suit Suit', 'Hawa Hawai', 'Banjaara', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com', 'M Bole To']  
+**Correct label:** 'M Bole To' found at rank 7  
+**Top-1 prediction:** Suit Suit  
 
 ---
 
-**Testing:** song2_snippet4.mp3
-**Top-7 predictions:** ['Hawa Hawai', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Suit Suit', 'M Bole To', 'Banjaara', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com']
-**Correct label:** 'M Bole To' found at rank 4
-**Top-1 prediction:** Hawa Hawai
+**Testing:** song2_snippet4.mp3  
+**Top-7 predictions:** ['Hawa Hawai', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Suit Suit', 'M Bole To', 'Banjaara', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com']  
+**Correct label:** 'M Bole To' found at rank 4  
+**Top-1 prediction:** Hawa Hawai  
 
 ---
 
-**Testing:** song3_snippet1.mp3
-**Top-7 predictions:** ['Suit Suit', 'M Bole To', 'Hanuman Chalisa(PagalWorld.com.se)', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'DJ Waley Babu - PagalSongs.com', 'Hawa Hawai', 'Falak Tak']
-**Correct label:** 'Hanuman Chalisa(PagalWorld.com.se)' found at rank 3
-**Top-1 prediction:** Suit Suit
+**Testing:** song3_snippet1.mp3  
+**Top-7 predictions:** ['Suit Suit', 'M Bole To', 'Hanuman Chalisa(PagalWorld.com.se)', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'DJ Waley Babu - PagalSongs.com', 'Hawa Hawai', 'Falak Tak']  
+**Correct label:** 'Hanuman Chalisa(PagalWorld.com.se)' found at rank 3  
+**Top-1 prediction:** Suit Suit  
 
 ---
 
-**Testing:** song3_snippet2.mp3
-**Top-7 predictions:** ['Banjaara', 'Hanuman Chalisa(PagalWorld.com.se)', 'Hawa Hawai', 'Suit Suit', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'M Bole To', 'DJ Waley Babu - PagalSongs.com']
-**Correct label:** 'Hanuman Chalisa(PagalWorld.com.se)' found at rank 2
-**Top-1 prediction:** Banjaara
+**Testing:** song3_snippet2.mp3  
+**Top-7 predictions:** ['Banjaara', 'Hanuman Chalisa(PagalWorld.com.se)', 'Hawa Hawai', 'Suit Suit', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'M Bole To', 'DJ Waley Babu - PagalSongs.com']  
+**Correct label:** 'Hanuman Chalisa(PagalWorld.com.se)' found at rank 2  
+**Top-1 prediction:** Banjaara  
 
 ---
 
-**Testing:** song3_snippet4.mp3
-**Top-7 predictions:** ['Suit Suit', 'Banjaara', 'Hanuman Chalisa(PagalWorld.com.se)', 'Hawa Hawai', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'M Bole To', 'DJ Waley Babu - PagalSongs.com']
-**Correct label:** 'Hanuman Chalisa(PagalWorld.com.se)' found at rank 3
-**Top-1 prediction:** Suit Suit
+**Testing:** song3_snippet4.mp3  
+**Top-7 predictions:** ['Suit Suit', 'Banjaara', 'Hanuman Chalisa(PagalWorld.com.se)', 'Hawa Hawai', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'M Bole To', 'DJ Waley Babu - PagalSongs.com']  
+**Correct label:** 'Hanuman Chalisa(PagalWorld.com.se)' found at rank 3  
+**Top-1 prediction:** Suit Suit  
 
 ---
 
-**Testing:** song4_snippet1.mp3
-**Top-7 predictions:** ['Hawa Hawai', 'Suit Suit', 'Banjaara', 'M Bole To', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com']
-**Correct label:** 'Suit Suit' found at rank 2
-**Top-1 prediction:** Hawa Hawai
+**Testing:** song4_snippet1.mp3  
+**Top-7 predictions:** ['Hawa Hawai', 'Suit Suit', 'Banjaara', 'M Bole To', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com']  
+**Correct label:** 'Suit Suit' found at rank 2  
+**Top-1 prediction:** Hawa Hawai  
 
 ---
 
-**Testing:** song4_snippet2.mp3
-**Top-7 predictions:** ['Suit Suit', 'M Bole To', 'Hawa Hawai', 'Hanuman Chalisa(PagalWorld.com.se)', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'DJ Waley Babu - PagalSongs.com', 'Banjaara']
-**Correct label:** 'Suit Suit' found at rank 1
-**Top-1 prediction:** Suit Suit
+**Testing:** song4_snippet2.mp3  
+**Top-7 predictions:** ['Suit Suit', 'M Bole To', 'Hawa Hawai', 'Hanuman Chalisa(PagalWorld.com.se)', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'DJ Waley Babu - PagalSongs.com', 'Banjaara']  
+**Correct label:** 'Suit Suit' found at rank 1  
+**Top-1 prediction:** Suit Suit  
 
 ---
 
-**Testing:** song4_snippet4.mp3
-**Top-7 predictions:** ['Suit Suit', 'Hawa Hawai', 'DJ Waley Babu - PagalSongs.com', 'M Bole To', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Falak Tak', 'Banjaara']
-**Correct label:** 'Suit Suit' found at rank 1
-**Top-1 prediction:** Suit Suit
+**Testing:** song4_snippet4.mp3  
+**Top-7 predictions:** ['Suit Suit', 'Hawa Hawai', 'DJ Waley Babu - PagalSongs.com', 'M Bole To', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Falak Tak', 'Banjaara']  
+**Correct label:** 'Suit Suit' found at rank 1  
+**Top-1 prediction:** Suit Suit  
 
 ---
 
-**Testing:** song5_snippet1.mp3
-**Top-7 predictions:** ['Suit Suit', 'Banjaara', 'Hanuman Chalisa(PagalWorld.com.se)', 'Hawa Hawai', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Bekhayali - PagalNew', 'DJ Waley Babu - PagalSongs.com']
-**Correct label:** 'I Love You(PagalWorldl)' not in top-7
-**Top-1 prediction:** Suit Suit
+**Testing:** song5_snippet1.mp3  
+**Top-7 predictions:** ['Suit Suit', 'Banjaara', 'Hanuman Chalisa(PagalWorld.com.se)', 'Hawa Hawai', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Bekhayali - PagalNew', 'DJ Waley Babu - PagalSongs.com']  
+**Correct label:** 'I Love You(PagalWorldl)' not in top-7  
+**Top-1 prediction:** Suit Suit  
 
 ---
 
-**Testing:** song5_snippet2.mp3
-**Top-7 predictions:** ['Suit Suit', 'Hawa Hawai', 'Banjaara', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com', 'M Bole To']
-**Correct label:** 'I Love You(PagalWorldl)' not in top-7
-**Top-1 prediction:** Suit Suit
+**Testing:** song5_snippet2.mp3  
+**Top-7 predictions:** ['Suit Suit', 'Hawa Hawai', 'Banjaara', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com', 'M Bole To']  
+**Correct label:** 'I Love You(PagalWorldl)' not in top-7  
+**Top-1 prediction:** Suit Suit  
 
 ---
 
-**Testing:** song5_snippet4.mp3
-**Top-7 predictions:** ['Suit Suit', 'DJ Waley Babu - PagalSongs.com', 'Hawa Hawai', 'Falak Tak', 'M Bole To', 'Banjaara', 'Dua (Article 370)_320-(Fun2Desi.Com)']
-**Correct label:** 'I Love You(PagalWorldl)' not in top-7
-**Top-1 prediction:** Suit Suit
+**Testing:** song5_snippet4.mp3  
+**Top-7 predictions:** ['Suit Suit', 'DJ Waley Babu - PagalSongs.com', 'Hawa Hawai', 'Falak Tak', 'M Bole To', 'Banjaara', 'Dua (Article 370)_320-(Fun2Desi.Com)']  
+**Correct label:** 'I Love You(PagalWorldl)' not in top-7  
+**Top-1 prediction:** Suit Suit  
 
 ---
 
-**Testing:** song6_snippet1.mp3
-**Top-7 predictions:** ['Hawa Hawai', 'Suit Suit', 'Hanuman Chalisa(PagalWorld.com.se)', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'M Bole To', 'DJ Waley Babu - PagalSongs.com', 'Banjaara']
-**Correct label:** 'Hawa Hawai' found at rank 1
-**Top-1 prediction:** Hawa Hawai
+**Testing:** song6_snippet1.mp3  
+**Top-7 predictions:** ['Hawa Hawai', 'Suit Suit', 'Hanuman Chalisa(PagalWorld.com.se)', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'M Bole To', 'DJ Waley Babu - PagalSongs.com', 'Banjaara']  
+**Correct label:** 'Hawa Hawai' found at rank 1  
+**Top-1 prediction:** Hawa Hawai  
 
 ---
 
-**Testing:** song6_snippet2.mp3
-**Top-7 predictions:** ['Hawa Hawai', 'Suit Suit', 'DJ Waley Babu - PagalSongs.com', 'M Bole To', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hanuman Chalisa(PagalWorld.com.se)', 'Banjaara']
-**Correct label:** 'Hawa Hawai' found at rank 1
-**Top-1 prediction:** Hawa Hawai
+**Testing:** song6_snippet2.mp3  
+**Top-7 predictions:** ['Hawa Hawai', 'Suit Suit', 'DJ Waley Babu - PagalSongs.com', 'M Bole To', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hanuman Chalisa(PagalWorld.com.se)', 'Banjaara']  
+**Correct label:** 'Hawa Hawai' found at rank 1  
+**Top-1 prediction:** Hawa Hawai  
 
 ---
 
-**Testing:** song6_snippet4.mp3
-**Top-7 predictions:** ['Suit Suit', 'Hawa Hawai', 'M Bole To', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com', 'Banjaara']
-**Correct label:** 'Hawa Hawai' found at rank 2
-**Top-1 prediction:** Suit Suit
+**Testing:** song6_snippet4.mp3  
+**Top-7 predictions:** ['Suit Suit', 'Hawa Hawai', 'M Bole To', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com', 'Banjaara']  
+**Correct label:** 'Hawa Hawai' found at rank 2  
+**Top-1 prediction:** Suit Suit  
 
 ---
 
-**Testing:** song7_snippet1.mp3
-**Top-7 predictions:** ['Banjaara', 'Suit Suit', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hawa Hawai', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com', 'Falak Tak']
-**Correct label:** 'Falak Tak' found at rank 7
-**Top-1 prediction:** Banjaara
+**Testing:** song7_snippet1.mp3  
+**Top-7 predictions:** ['Banjaara', 'Suit Suit', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hawa Hawai', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com', 'Falak Tak']  
+**Correct label:** 'Falak Tak' found at rank 7  
+**Top-1 prediction:** Banjaara  
 
 ---
 
-**Testing:** song7_snippet2.mp3
-**Top-7 predictions:** ['Banjaara', 'Suit Suit', 'Hawa Hawai', 'Hanuman Chalisa(PagalWorld.com.se)', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Bekhayali - PagalNew', 'DJ Waley Babu - PagalSongs.com']
-**Correct label:** 'Falak Tak' not in top-7
-**Top-1 prediction:** Banjaara
+**Testing:** song7_snippet2.mp3  
+**Top-7 predictions:** ['Banjaara', 'Suit Suit', 'Hawa Hawai', 'Hanuman Chalisa(PagalWorld.com.se)', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Bekhayali - PagalNew', 'DJ Waley Babu - PagalSongs.com']  
+**Correct label:** 'Falak Tak' not in top-7  
+**Top-1 prediction:** Banjaara  
 
 ---
 
-**Testing:** song7_snippet4.mp3
-**Top-7 predictions:** ['M Bole To', 'Suit Suit', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hawa Hawai', 'DJ Waley Babu - PagalSongs.com', 'Hanuman Chalisa(PagalWorld.com.se)', 'Banjaara']
-**Correct label:** 'Falak Tak' not in top-7
-**Top-1 prediction:** M Bole To
+**Testing:** song7_snippet4.mp3  
+**Top-7 predictions:** ['M Bole To', 'Suit Suit', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hawa Hawai', 'DJ Waley Babu - PagalSongs.com', 'Hanuman Chalisa(PagalWorld.com.se)', 'Banjaara']  
+**Correct label:** 'Falak Tak' not in top-7  
+**Top-1 prediction:** M Bole To  
 
 ---
 
-**Testing:** song8_snippet1.mp3
-**Top-7 predictions:** ['Suit Suit', 'Banjaara', 'Hawa Hawai', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'DJ Waley Babu - PagalSongs.com', 'Hanuman Chalisa(PagalWorld.com.se)', 'M Bole To']
-**Correct label:** 'Bekhayali - PagalNew' not in top-7
-**Top-1 prediction:** Suit Suit
+**Testing:** song8_snippet1.mp3  
+**Top-7 predictions:** ['Suit Suit', 'Banjaara', 'Hawa Hawai', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'DJ Waley Babu - PagalSongs.com', 'Hanuman Chalisa(PagalWorld.com.se)', 'M Bole To']  
+**Correct label:** 'Bekhayali - PagalNew' not in top-7  
+**Top-1 prediction:** Suit Suit  
 
 ---
 
-**Testing:** song8_snippet2.mp3
-**Top-7 predictions:** ['Suit Suit', 'Hawa Hawai', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Banjaara', 'Hanuman Chalisa(PagalWorld.com.se)', 'M Bole To', 'DJ Waley Babu - PagalSongs.com']
-**Correct label:** 'Bekhayali - PagalNew' not in top-7
-**Top-1 prediction:** Suit Suit
+**Testing:** song8_snippet2.mp3  
+**Top-7 predictions:** ['Suit Suit', 'Hawa Hawai', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Banjaara', 'Hanuman Chalisa(PagalWorld.com.se)', 'M Bole To', 'DJ Waley Babu - PagalSongs.com']  
+**Correct label:** 'Bekhayali - PagalNew' not in top-7  
+**Top-1 prediction:** Suit Suit  
 
 ---
 
-**Testing:** song8_snippet4.mp3
-**Top-7 predictions:** ['Banjaara', 'Suit Suit', 'Hawa Hawai', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com', 'M Bole To']
-**Correct label:** 'Bekhayali - PagalNew' not in top-7
-**Top-1 prediction:** Banjaara
+**Testing:** song8_snippet4.mp3  
+**Top-7 predictions:** ['Banjaara', 'Suit Suit', 'Hawa Hawai', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com', 'M Bole To']  
+**Correct label:** 'Bekhayali - PagalNew' not in top-7  
+**Top-1 prediction:** Banjaara  
 
 ---
 
-**Testing:** song9_snippet1.mp3
-**Top-7 predictions:** ['Hawa Hawai', 'Suit Suit', 'Banjaara', 'Hanuman Chalisa(PagalWorld.com.se)', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'DJ Waley Babu - PagalSongs.com', 'Bekhayali - PagalNew']
-**Correct label:** 'DJ Waley Babu - PagalSongs.com' found at rank 6
-**Top-1 prediction:** Hawa Hawai
+**Testing:** song9_snippet1.mp3  
+**Top-7 predictions:** ['Hawa Hawai', 'Suit Suit', 'Banjaara', 'Hanuman Chalisa(PagalWorld.com.se)', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'DJ Waley Babu - PagalSongs.com', 'Bekhayali - PagalNew']  
+**Correct label:** 'DJ Waley Babu - PagalSongs.com' found at rank 6  
+**Top-1 prediction:** Hawa Hawai  
 
 ---
 
-**Testing:** song9_snippet2.mp3
-**Top-7 predictions:** ['Hawa Hawai', 'Suit Suit', 'Banjaara', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com', 'Bekhayali - PagalNew']
-**Correct label:** 'DJ Waley Babu - PagalSongs.com' found at rank 6
-**Top-1 prediction:** Hawa Hawai
+**Testing:** song9_snippet2.mp3  
+**Top-7 predictions:** ['Hawa Hawai', 'Suit Suit', 'Banjaara', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com', 'Bekhayali - PagalNew']  
+**Correct label:** 'DJ Waley Babu - PagalSongs.com' found at rank 6  
+**Top-1 prediction:** Hawa Hawai  
 
 ---
 
-**Testing:** song9_snippet4.mp3
-**Top-7 predictions:** ['Dua (Article 370)_320-(Fun2Desi.Com)', 'M Bole To', 'Hawa Hawai', 'Suit Suit', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com', 'Banjaara']
-**Correct label:** 'DJ Waley Babu - PagalSongs.com' found at rank 6
-**Top-1 prediction:** Dua (Article 370)_320-(Fun2Desi.Com)
+**Testing:** song9_snippet4.mp3  
+**Top-7 predictions:** ['Dua (Article 370)_320-(Fun2Desi.Com)', 'M Bole To', 'Hawa Hawai', 'Suit Suit', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com', 'Banjaara']  
+**Correct label:** 'DJ Waley Babu - PagalSongs.com' found at rank 6  
+**Top-1 prediction:** Dua (Article 370)_320-(Fun2Desi.Com)  
 
 ---
 
