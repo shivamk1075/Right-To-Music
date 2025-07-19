@@ -16,7 +16,7 @@ def download_db_if_missing():
     db_filename = "db.sqlite3"
     db_path = os.path.join(db_folder, db_filename)
 
-    db_url = "https://drive.google.com/uc?export=download&id=1aBcDxyzEFGhiJklMnOpQRstuVWxyzAB"
+    db_url = "https://drive.google.com/uc?export=download&id=1vj43ObRbVrBW6eU7gumGtt9EfbZw0gQn"
 
     os.makedirs(db_folder, exist_ok=True)
 
