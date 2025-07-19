@@ -5,9 +5,10 @@ This report presents the results of a grid search performed to optimize paramete
 ## Best Result
 **Best Top-7 Accuracy:** 73.33%  
 **Best Parameter Set:**
-```
+
 {'coef1': 0.25, 'coef2': 0.5, 'targetZoneSize1': 8, 'targetZoneSize2': 2, 'threshold': 7, 'tolerance': 100}
-```
+
+---
 
 ## Full Grid Search Log
 Below is the complete log of the grid search run, showing predictions and ranks for each test snippet:
@@ -217,7 +218,7 @@ Below is the complete log of the grid search run, showing predictions and ranks 
 
 **Testing:** song9_snippet2.mp3
 **Top-7 predictions:** ['Hawa Hawai', 'Suit Suit', 'Banjaara', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'Hanuman Chalisa(PagalWorld.com.se)', 'DJ Waley Babu - PagalSongs.com', 'Bekhayali - PagalNew']
-**Correct label:** 'DJ Waley Babu - PagalSongs.2C)' found at rank 6
+**Correct label:** 'DJ Waley Babu - PagalSongs.com' found at rank 6
 **Top-1 prediction:** Hawa Hawai
 
 ---
