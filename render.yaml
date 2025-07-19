@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: Right-To-Match
+    name: Right-To-Music
     env: python
     plan: free
     rootDir: Project/server
