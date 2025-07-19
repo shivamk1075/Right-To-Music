@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: right-to-match
+    name: Right-To-Match
     env: python
     plan: free
     rootDir: Project/server
