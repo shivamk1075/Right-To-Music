@@ -6,6 +6,28 @@ from utils.logger import get_logger
 from utils.helpers import create_folder
 import cmdHandlers as cmdHandlers  
 
+//db downloading
+import os
+import urllib.request
+
+# Ensuring DB is present
+def download_db_if_missing():
+    db_folder = "db"
+    db_filename = "db.sqlite3"
+    db_path = os.path.join(db_folder, db_filename)
+
+    db_url = "https://drive.google.com/uc?export=download&id=1aBcDxyzEFGhiJklMnOpQRstuVWxyzAB"
+
+    os.makedirs(db_folder, exist_ok=True)
+
+    if not os.path.exists(db_path):
+        print("Downloading database...")
+        urllib.request.urlretrieve(db_url, db_path)
+        print("Download complete.")
+
+download_db_if_missing()
+//
+
 SONGS_DIR = "songs"
 
 def main():
