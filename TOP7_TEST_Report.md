@@ -20,10 +20,10 @@ Below is the complete log of the grid search run, showing predictions and ranks 
 
 ### Testing with parameters: {'coef1': 0.25, 'coef2': 0.5, 'targetZoneSize1': 8, 'targetZoneSize2': 2, 'threshold': 7, 'tolerance': 100}
 
-**Testing:** song10_snippet1.mp3
-**Top-7 predictions:** ['Banjaara', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'M Bole To', 'DJ Waley Babu - PagalSongs.com', 'Suit Suit', 'Hawa Hawai', 'Falak Tak']
-**Correct label:** 'Dua (Article 370)_320-(Fun2Desi.Com)' found at rank 2
-**Top-1 prediction:** Banjaara
+**Testing:** song10_snippet1.mp3  
+**Top-7 predictions:** ['Banjaara', 'Dua (Article 370)_320-(Fun2Desi.Com)', 'M Bole To', 'DJ Waley Babu - PagalSongs.com', 'Suit Suit', 'Hawa Hawai', 'Falak Tak']  
+**Correct label:** 'Dua (Article 370)_320-(Fun2Desi.Com)' found at rank 2  
+**Top-1 prediction:** Banjaara  
 
 ---
 
