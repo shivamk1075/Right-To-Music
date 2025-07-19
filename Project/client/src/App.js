@@ -182,7 +182,7 @@ function App() {
       // Stop recording after 20 seconds
       setTimeout(function () {
         mediaRecorder.stop();
-      }, 10000);
+      }, 5000);
 
       mediaRecorder.addEventListener("stop", async () => {
         const blob = new Blob(chunks, { type: "audio/wav" });
