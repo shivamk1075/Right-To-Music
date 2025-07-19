@@ -8,21 +8,23 @@ import cmdHandlers as cmdHandlers
 
 # //db downloading
 import os
-import urllib.request
 
-# Ensuring DB is present
 def download_db_if_missing():
+    import gdown
+
     db_folder = "db"
     db_filename = "db.sqlite3"
     db_path = os.path.join(db_folder, db_filename)
 
-    db_url = "https://drive.google.com/uc?export=download&id=1vj43ObRbVrBW6eU7gumGtt9EfbZw0gQn"
+    # Real Google Drive ID
+    db_id = "1vj43ObRbVrBW6eU7gumGtt9EfbZw0gQn"
+    db_url = f"https://drive.google.com/uc?id={db_id}"
 
     os.makedirs(db_folder, exist_ok=True)
 
     if not os.path.exists(db_path):
         print("Downloading database...")
-        urllib.request.urlretrieve(db_url, db_path)
+        gdown.download(db_url, db_path, quiet=False)
         print("Download complete.")
 
 download_db_if_missing()
