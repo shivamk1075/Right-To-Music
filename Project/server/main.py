@@ -6,7 +6,7 @@ from utils.logger import get_logger
 from utils.helpers import create_folder
 import cmdHandlers as cmdHandlers  
 
-//db downloading
+# //db downloading
 import os
 import urllib.request
 
@@ -26,7 +26,7 @@ def download_db_if_missing():
         print("Download complete.")
 
 download_db_if_missing()
-//
+# //
 
 SONGS_DIR = "songs"
 
