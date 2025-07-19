@@ -49,3 +49,4 @@ colorlog>=6.0.0       # For colored logging
 
 # Optional but recommended
 numba>=0.54.1  # For performance optimization
+gdown
