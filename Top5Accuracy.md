@@ -9,10 +9,6 @@ This report presents the results of a grid search performed to optimize paramete
 {'coef1': 0.25, 'coef2': 0.5, 'targetZoneSize1': 8, 'targetZoneSize2': 2, 'threshold': 7, 'tolerance': 100}
 ```
 
-Here's the complete Markdown code for your Right- Grid Search Report, formatted to ensure clear line breaks and consistent presentation, similar to your previous request. I've also corrected "Top-3 predictions" to "Top-5 predictions" to match the report's focus on Top-5 accuracy and the number of items listed.
-
-Markdown
-
 # RightToMusic Grid Search Report
 
 This report presents the results of a grid search performed to optimize parameters for the RightToMusic fingerprinting and song identification system. The goal was to maximize **Top-5 accuracy** for song snippet recognition.
