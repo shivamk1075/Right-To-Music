@@ -1,142 +1,193 @@
-# RIGHT-TO-MUSIC
+# RightToMusic
 
-<div align="center">
+### A full-stack audio fingerprinting system for identifying songs from short snippets — built with a custom Shazam-like algorithm, Python backend, and React frontend.
 
-[![Python](https://img.shields.io/badge/python-v3.6+-blue.svg)](https://www.python.org/)
-[![React](https://img.shields.io/badge/react-v18.2.0-blue.svg)](https://reactjs.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+_A modular pipeline combining spectrogram analysis, FFT-based fingerprinting, and a grid-searched parameter system to recognize songs from just 5 seconds of audio. By Shivam_
 
-</div>
+Identifying a song from a short clip is harder than it looks. Audio is noisy, snippets can start anywhere, and naive approaches fall apart quickly. **RightToMusic** tackles this by building a full audio fingerprinting pipeline from scratch — inspired by Shazam's algorithm — and wrapping it in a React frontend with real-time identification.
 
-A full-stack application for music identification and management using audio fingerprinting technology. Built with Python backend and React.js frontend.
+This project treats **acoustic fingerprints as a search problem**: extract a compact hash representation from any snippet, look it up against a database of known songs, and rank candidates by match strength. A full grid search was run to find the optimal fingerprinting parameters, achieving **73.33% Top-7 accuracy** on held-out 5-second snippets.
 
-## Dataset
+### Goal of the Project
 
-The project includes a test dataset consisting of:
-- 10 original full-length songs for training
-- 5-second snippets of each song taken at different time intervals
-- Labeled CSV mapping files for testing and validation
-- Both small and large test sets for comprehensive algorithm evaluation
+The goal was to build a **reproducible, end-to-end music identification system** that:
+1. Ingests full-length songs and stores their fingerprints in a database
+2. Accepts a short audio snippet (live or file-based) as a query
+3. Matches it against the database using spectrogram-based fingerprinting
+4. Returns a **ranked list of candidate songs** with the correct match in the top results
 
-## Quick Start
+A grid search over fingerprinting hyperparameters was conducted to maximize identification accuracy.
 
-### Prerequisites
+### What I Did
 
-#### Backend
-- Python 3.6+
-- FFmpeg (for audio processing)
-- pip package manager
+- I implemented a **custom audio fingerprinting pipeline** inspired by the Shazam algorithm, fully re-written in Python from an open-source Go reference:
 
-#### Frontend
-- Node.js 14+ and npm
-- Modern web browser with WebAssembly support
-- System audio drivers for audio capture
+  - **Spectrogram Generation** ([`spectrogram.py`](Project/server/shazam/spectrogram.py)): Converts raw audio into a time-frequency representation using FFT, forming the basis for fingerprint extraction.
+  - **Fingerprint Generation** ([`fingerprint.py`](Project/server/shazam/fingerprint.py)): Extracts robust, compact hashes from spectrogram peaks. Stores fingerprints in a SQLite database for fast candidate lookup.
+  - **Matching & Ranking** ([`sqlite.py`](Project/server/db/sqlite.py)): Queries the fingerprint database and ranks candidate songs by match density.
 
-### Installation
+- A **grid search** was run over key fingerprinting parameters to maximize Top-K accuracy on held-out 5-second snippets:
 
-1. Clone the repository:
+  | Parameter | Best Value | Description |
+  |---|---|---|
+  | `coef1` | 0.25 | Peak detection coefficient 1 |
+  | `coef2` | 0.5 | Peak detection coefficient 2 |
+  | `targetZoneSize1` | 8 | Pairing zone size (dimension 1) |
+  | `targetZoneSize2` | 2 | Pairing zone size (dimension 2) |
+  | `threshold` | 7 | Minimum peak magnitude threshold |
+  | `tolerance` | 100 | Time offset tolerance for matching |
+
+- A **Flask backend** exposes REST endpoints for song ingestion, fingerprint lookup, Spotify download integration, and database management, plus a CLI interface for direct use.
+
+- A **React frontend** provides real-time song identification via microphone capture, with WebAssembly support for in-browser audio processing.
+
+### Architecture
+
+```
+┌─────────────────────┐    ┌─────────────────────┐    ┌─────────────────────┐
+│   React Frontend    │    │   Flask Backend     │    │  Fingerprint Engine │
+│                     │    │                     │    │                     │
+│ • Live Mic Capture  │◄──►│ • REST API          │◄──►│ • spectrogram.py    │
+│ • Song ID Results   │    │ • CLI Interface     │    │ • fingerprint.py    │
+│ • Match Rankings    │    │ • Spotify DL        │    │ • SQLite DB         │
+│ • WebAssembly Audio │    │ • DB Management     │    │ • Rank & Match      │
+└─────────────────────┘    └─────────────────────┘    └─────────────────────┘
+          │                          │                          │
+          └──────────────────────────┼──────────────────────────┘
+                                     │
+                    ┌────────────────▼────────────────┐
+                    │         Data Pipeline           │
+                    │                                 │
+                    │ • Audio ingest   (FFmpeg)       │
+                    │ • Spectrogram    (FFT)          │
+                    │ • Peak picking   (threshold)    │
+                    │ • Hash pairs     (fingerprint)  │
+                    │ • DB lookup      (SQLite)       │
+                    │ • Rank output    (Top-K)        │
+                    └─────────────────────────────────┘
+```
+
+### Dataset
+
+The project includes a test dataset of:
+- **10 original full-length songs** used for fingerprint database construction
+- **5-second snippets** of each song sampled at multiple time offsets (snippet1, snippet2, snippet4)
+- **Labeled CSV mapping files** for ground-truth evaluation
+- Both small and large test sets for comprehensive algorithm benchmarking
+
+### Grid Search Results
+
+All parameter sets were evaluated on held-out 5-second snippets. Below are the results from the best-performing configuration.
+
+#### Best Parameter Set
+
+```
+{'coef1': 0.25, 'coef2': 0.5, 'targetZoneSize1': 8, 'targetZoneSize2': 2, 'threshold': 7, 'tolerance': 100}
+```
+
+#### Top-5 Accuracy — 53.33%
+
+| Song | Snippet | Correct Label | Rank Found |
+|---|---|---|---|
+| song1 | snippet2 | Banjaara | 1 |
+| song2 | snippet1 | M Bole To | 1 |
+| song4 | snippet2 | Suit Suit | 1 |
+| song4 | snippet4 | Suit Suit | 1 |
+| song6 | snippet1 | Hawa Hawai | 1 |
+| song6 | snippet2 | Hawa Hawai | 1 |
+| song3 | snippet1 | Hanuman Chalisa | 3 |
+| song3 | snippet4 | Hanuman Chalisa | 3 |
+| song10 | snippet4 | Dua (Article 370) | 4 |
+| song2 | snippet4 | M Bole To | 4 |
+| ... | ... | ... | ... |
+| song5, 7, 8, 9 | all | various | not in top-5 |
+
+#### Top-7 Accuracy — 73.33% ✦ Best Result
+
+Extending to Top-7 candidates recovers several additional correct matches — notably `Falak Tak` (rank 7), `M Bole To` (rank 7), and `DJ Waley Babu` (rank 6 across all three snippets of song9).
+
+| Metric | Value |
+|---|---|
+| Top-5 Accuracy | 53.33% |
+| **Top-7 Accuracy** | **73.33%** |
+
+Songs that consistently failed identification (`Bekhayali`, `I Love You`, `Falak Tak`) suggest that certain tracks are underrepresented in the fingerprint database or are acoustically similar to higher-frequency songs like `Suit Suit` and `Hawa Hawai`, which dominate false-positive predictions.
+
+---
+
+### Use
+
+#### Prerequisites
+
+**Backend:** Python 3.6+, FFmpeg, pip  
+**Frontend:** Node.js 14+, npm, modern browser with WebAssembly support
+
+#### Installation
+
 ```bash
 git clone https://github.com/shivamk1075/Right-To-Music
 cd Right-To-Music
 ```
 
-2. Install backend dependencies:
+Install backend dependencies:
+
 ```bash
 cd Project/server
 pip install -r requirements.txt
 ```
 
-3. Install frontend dependencies:
+Install frontend dependencies:
+
 ```bash
 cd ../client
 npm install
 ```
 
-## 💻 Usage
+#### Running the App
 
-### Starting the Backend Server
+Start the backend:
+
 ```bash
 cd Project/server
 python main.py serve --proto http -p 5000
 ```
 
-### Starting the Frontend Development Server
+Start the frontend:
+
 ```bash
 cd Project/client
 npm start
 ```
-The application will be available at `http://localhost:3000`
 
-### Basic Commands
+The app will be available at `http://localhost:3000`.
+
+#### CLI Commands
+
 ```bash
-# Find a song from a file (Backend)
+# Identify a song from a file
 python main.py find <file_path>
 
-# Download from Spotify (Backend)
+# Download a song from Spotify
 python main.py download <spotify_url>
 
-# Erase all downloaded songs (Backend)
+# Erase all songs from the database
 python main.py erase
 
-# Erase a specific song by ID (Backend)
+# Erase a specific song by ID
 python main.py eraseID <SongID>
 ```
 
-## Technical Details
+### References & Inspiration
 
-### Audio Fingerprinting
+- **Original Go Implementation** by Chigozirim Igweamaka (MIT Licensed): The conceptual foundation for the fingerprinting approach. This codebase is a full re-implementation in Python.
+- **Shazam's Audio Fingerprinting** — Wang, A. (2003). _An Industrial-Strength Audio Search Algorithm_: The algorithmic basis for constellation map fingerprinting and time-pair hashing.
 
-The project uses a custom implementation of audio fingerprinting technology, similar to Shazam's algorithm:
+### Thanks
 
-1. Audio Processing ([`spectrogram.py`](Project/server/shazam/spectrogram.py))
-   - Converts audio to spectrogram
-   - Uses FFT (Fast Fourier Transform) for frequency analysis
-
-2. Fingerprint Generation ([`fingerprint.py`](Project/server/shazam/fingerprint.py))
-   - Creates unique audio fingerprints
-   - Stores in SQLite database for quick matching
-
-### Database Structure
-
-The SQLite database ([`sqlite.py`](Project/server/db/sqlite.py)) maintains:
-- Song metadata (title, artist, YouTube ID)
-- Audio fingerprints
-- Relationship mappings
-
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-This project was inspired by an open-source Go implementation by Chigozirim Igweamaka (MIT Licensed). The codebase has been fully re-implemented in Python by Shivam.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit pull requests.
-
-## Contact
-
-shivam.kumar.101075@gmail.com
+- ... to **Chigozirim Igweamaka** for the open-source Go reference that inspired this project.
+- ... to the **FFmpeg** and **librosa** communities for making audio processing in Python accessible.
+- ... to the open-source community behind `Flask`, `SQLite`, and `React` for the full-stack scaffolding.
 
 ---
 
-<div align="center">
-  <p>
-    <a href="https://github.com/shivamk1075/Right-To-Music/stargazers">
-      <img src="https://img.shields.io/github/stars/shivamk1075/Right-To-Music?style=social" alt="Github Stars" />
-    </a>&nbsp;&nbsp;
-    <a href="https://github.com/shivamk1075/Right-To-Music/network/members">
-      <img src="https://img.shields.io/github/forks/shivamk1075/Right-To-Music?style=social" alt="Github Forks" />
-    </a>
-  </p>
-  
-  <p><strong>⭐ If you find this project useful, please consider giving it a star!</strong></p>
-  
-  <p>
-    <a href="https://github.com/shivamk1075/Right-To-Music/issues">Report Bug</a> · 
-    <a href="https://github.com/shivamk1075/Right-To-Music/issues">Request Feature</a>
-  </p>
-</div>
+_For questions or suggestions, feel free to open an issue or reach out at shivam.kumar.101075@gmail.com_
