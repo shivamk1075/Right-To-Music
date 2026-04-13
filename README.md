@@ -1,3 +1,5 @@
+<img src="data/HeaderMusic.png" alt="Header image showing audio fingerprinting visualization" width="80%"/>
+
 # RightToMusic
 
 ### A full-stack audio fingerprinting system for identifying songs from short snippets — built with a custom Shazam-like algorithm, Python backend, and React frontend.
@@ -176,6 +178,19 @@ python main.py erase
 # Erase a specific song by ID
 python main.py eraseID <SongID>
 ```
+
+### Live Demo
+
+A live deployment of the app is hosted on Render and accessible here:
+
+**🔗 [https://audio-matcher-81p8.onrender.com](https://audio-matcher-81p8.onrender.com)**
+
+> **Note:** The app is hosted on a free Render instance — it may take 30–60 seconds to wake up on first load.
+
+### Example
+
+_<img src="data/FrontendView.png" alt="RightToMusic frontend homepage" width="70%"/>_
+
 
 ### References & Inspiration
 
